@@ -93,6 +93,20 @@ class BinarySearchTree {
         return node;
       } else if (data > node.data) {
         node.right = removeBinary(node.right, data);
+      } else {
+        if (!node.left && !node.right) {
+          return node = null
+        }
+
+        if (!node.left) {
+          node.right = node
+          return node
+        }
+
+        if (!node.right) {
+          node.left = node
+          return node
+        }
       }
     }
   }
