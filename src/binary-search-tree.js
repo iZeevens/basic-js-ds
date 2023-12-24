@@ -94,22 +94,31 @@ class BinarySearchTree {
       } else if (data > node.data) {
         node.right = removeBinary(node.right, data);
       } else {
+
         if (!node.left && !node.right) {
-          return node = null
+          return null
         }
 
         if (!node.left) {
-          node = node.right
-          return node
+          return node.right
+        } else if (!node.right) {
+          return node.left
         }
 
-        if (!node.right) {
-          node = node.left
-          return node
+        if (node.left) {
+          node.data = max(node.left);
+          node.left = removeBinary(node.left, node.data);
+        } else {
+          node.data = min(node.right);
+          node.right = removeBinary(node.right, node.data);
+        }
+  
+
+        return node
         }
       }
     }
-  }
+  
 
   min() {
     let curr = this._root;
