@@ -88,25 +88,22 @@ class BinarySearchTree {
   min() {
     let curr = this._root;
 
-    while (curr) {
-      if (curr.left !== null) {
-        curr = curr.left;
-      } else {
-        return curr.data;
-      }
+    while (curr.left !== null) {
+      curr = curr.left;
     }
+
+    return curr.data;
   }
+  
 
   max() {
     let curr = this._root;
 
-    while (curr) {
-      if (curr.right !== null) {
-        curr = curr.right;
-      } else {
-        return curr.data;
-      }
+    while (curr.right !== null) {
+      curr = curr.right;
     }
+
+    return curr.data;
   }
 }
 
