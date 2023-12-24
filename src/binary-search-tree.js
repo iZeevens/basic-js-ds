@@ -9,22 +9,18 @@ const { Node } = require("../extensions/list-tree.js");
 
 class BinarySearchTree {
   constructor() {
-    this._root  = null;
+    this._root = null;
   }
 
   root() {
-    return this._root ;
+    return this._root;
   }
 
   add(data) {
     const node = new Node(data);
 
-    if (!this._root ) {
+    if (!this._root) {
       return (this._root = node);
-    }
-
-    if (node.data === data) {
-      return node;
     }
 
     let curr = this._root;
@@ -32,13 +28,13 @@ class BinarySearchTree {
     while (curr) {
       if (node.data < curr.data) {
         if (!curr.left) {
-          return (curr.left = node);
+          return this;
         }
 
         curr = curr.left;
       } else {
         if (!curr.right) {
-          return (curr.right = node);
+          return this;
         }
 
         curr = curr.right;
@@ -46,9 +42,23 @@ class BinarySearchTree {
     }
   }
 
-  has(/* data */) {
-    throw new NotImplementedError("Not implemented");
-    // remove line with error and write your code here
+  has(data) {
+    let curr = this._root;
+
+    while (curr) {
+
+      if (curr.data === data) {
+        return true;
+      }
+
+      if (data < curr.data) {
+        curr = curr.left;
+      } else {
+        curr = curr.right;
+      }
+    }
+
+    return false;
   }
 
   find(/* data */) {
@@ -71,11 +81,6 @@ class BinarySearchTree {
     // remove line with error and write your code here
   }
 }
-
-// const bst = new BinarySearchTree();
-// bst.add(7);
-// bst.add(1);
-// bst.add(5);
 
 module.exports = {
   BinarySearchTree,
