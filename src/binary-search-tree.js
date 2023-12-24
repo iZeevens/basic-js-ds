@@ -99,12 +99,12 @@ class BinarySearchTree {
         }
 
         if (!node.left) {
-          node.right = node
+          node = node.right
           return node
         }
 
         if (!node.right) {
-          node.left = node
+          node = node.left
           return node
         }
       }
