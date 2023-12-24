@@ -80,9 +80,21 @@ class BinarySearchTree {
     return null;
   }
 
-  remove(/* data */) {
-    throw new NotImplementedError("Not implemented");
-    // remove line with error and write your code here
+  remove(data) {
+    this._root = removeBinary(this._root, data);
+
+    function removeBinary(node, data) {
+      if (!node) {
+        return null;
+      }
+
+      if (data < node.data) {
+        node.left = removeBinary(node.left, data);
+        return node;
+      } else if (data > node.data) {
+        node.right = removeBinary(node.right, data);
+      }
+    }
   }
 
   min() {
@@ -94,7 +106,6 @@ class BinarySearchTree {
 
     return curr.data;
   }
-  
 
   max() {
     let curr = this._root;
