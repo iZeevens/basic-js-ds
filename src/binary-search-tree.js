@@ -100,37 +100,23 @@ class BinarySearchTree {
         }
 
         if (!node.left) {
-          return node.right
+          return node.right;
         } else if (!node.right) {
-          return node.left
+          return node.left;
         }
 
-        if (node.left) {
-          node.data = nodeMax(node);
-          node.left = removeBinary(node.left, node.data);
-        } else {
-          node.data = nodeMin(node);
-          node.right = removeBinary(node.right, node.data);
-        }
+        node.data = nodeMax(node.left).data;
+        node.left = removeBinary(node.left, node.data);
 
         return node;
       }
     }
 
     function nodeMax(node) {
-      let maxL = node.left;
-      while (maxL.right) {
-        maxL = maxL.right;
+      while (node.right) {
+        node = node.right;
       }
-      return maxL;
-    }
-
-    function nodeMin(node) {
-      let minR = node.right;
-      while (minR.left) {
-        minR = minR.left;
-      }
-      return minR;
+      return node;
     }
   }
 
