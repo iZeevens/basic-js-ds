@@ -28,13 +28,15 @@ class BinarySearchTree {
     while (curr) {
       if (node.data < curr.data) {
         if (!curr.left) {
-          return this;
+          curr.left = node;
+          return node;
         }
 
         curr = curr.left;
       } else {
         if (!curr.right) {
-          return this;
+          curr.right = node;
+          return node;
         }
 
         curr = curr.right;
@@ -46,7 +48,6 @@ class BinarySearchTree {
     let curr = this._root;
 
     while (curr) {
-
       if (curr.data === data) {
         return true;
       }
