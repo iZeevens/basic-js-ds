@@ -91,12 +91,12 @@ class BinarySearchTree {
       if (data < node.data) {
         node.left = removeBinary(node.left, data);
         return node;
-      } else if (data > node.data) {
+      } else if (node.data < data) {
         node.right = removeBinary(node.right, data);
+        return node;
       } else {
-
         if (!node.left && !node.right) {
-          return null
+          return null;
         }
 
         if (!node.left) {
@@ -106,19 +106,33 @@ class BinarySearchTree {
         }
 
         if (node.left) {
-          node.data = max(node.left);
+          node.data = nodeMax(node);
           node.left = removeBinary(node.left, node.data);
         } else {
-          node.data = min(node.right);
+          node.data = nodeMin(node);
           node.right = removeBinary(node.right, node.data);
         }
-  
 
-        return node
-        }
+        return node;
       }
     }
-  
+
+    function nodeMax(node) {
+      let maxL = node.left;
+      while (maxL.right) {
+        maxL = maxL.right;
+      }
+      return maxL;
+    }
+
+    function nodeMin(node) {
+      let minR = node.right;
+      while (minR.left) {
+        minR = minR.left;
+      }
+      return minR;
+    }
+  }
 
   min() {
     let curr = this._root;
