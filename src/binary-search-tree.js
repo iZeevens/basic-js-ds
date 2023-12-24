@@ -9,21 +9,21 @@ const { Node } = require("../extensions/list-tree.js");
 
 class BinarySearchTree {
   constructor() {
-    this.root = null;
+    this._root  = null;
   }
 
   root() {
-    return this.root;
+    return this._root ;
   }
 
   add(data) {
     const node = new Node(data);
 
-    if (!this.root) {
-      return (this.root = node);
+    if (!this._root ) {
+      return (this._root = node);
     }
 
-    let curr = this.root;
+    let curr = this._root;
 
     while (curr) {
       if (node.data < curr.data) {
