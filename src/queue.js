@@ -21,8 +21,12 @@ class Queue {
   }
 
   getUnderlyingList() {
-    throw new NotImplementedError("Not implemented");
-    // remove line with error and write your code here
+    let stack = [];
+
+    for (let key in this.elements) {
+      stack.push(this.elements[key].value);
+    }
+    return stack;
   }
 
   enqueue(value) {
@@ -39,8 +43,11 @@ class Queue {
   }
 
   dequeue() {
-    throw new NotImplementedError("Not implemented");
-    // remove line with error and write your code here
+    const value = this.elements[this.head].value;
+    delete this.elements[this.head];
+    this.head++;
+
+    return value;
   }
 }
 
