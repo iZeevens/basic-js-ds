@@ -23,6 +23,10 @@ class BinarySearchTree {
       return (this._root = node);
     }
 
+    if (node.data === data) {
+      return node;
+    }
+
     let curr = this._root;
 
     while (curr) {
