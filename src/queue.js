@@ -21,12 +21,7 @@ class Queue {
   }
 
   getUnderlyingList() {
-    let stack = [];
-
-    for (let key in this.elements) {
-      stack.push(this.elements[key].value);
-    }
-    return stack;
+    return this.elements[this.head];
   }
 
   enqueue(value) {
@@ -36,6 +31,7 @@ class Queue {
       this.elements[this.tail] = newNode;
       this.head = this.tail;
     } else {
+      this.elements[this.tail - 1].next = newNode;
       this.elements[this.tail] = newNode;
     }
 
